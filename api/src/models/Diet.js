@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('recipe', {
+  sequelize.define('diet', {
     id: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -12,26 +12,6 @@ module.exports = (sequelize) => {
     },
 
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    score: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    healthy: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    howto: {
       type: DataTypes.STRING,
       allowNull: false,
     }
