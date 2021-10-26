@@ -1,9 +1,18 @@
 const { Router } = require('express');
+const { Recipe } = require('../db');
 
 const router = Router();
 
-router.post('/', (req, res)=>{
-    res.send("POST recipe");
+router.post('/', async (req, res, next)=>{
+    const {name, description, score, healthy, howto} = req.body;
+    const newRecipe = await Recipe.create({
+        name,
+        description,
+        score,
+        healthy,
+        howto
+    })
+    res.send(newRecipe);
 });
 
 module.exports = router;
