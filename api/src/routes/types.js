@@ -6,7 +6,10 @@ const router = Router();
 router.get('/', (req, res, next)=>{
     Diet.findAll()
     .then((types)=>{
-        res.send(types);
+        names = types.map((type)=>{
+            return(type.name);
+        })
+        res.send(names);
     })
     .catch((error)=>{
         next(error);

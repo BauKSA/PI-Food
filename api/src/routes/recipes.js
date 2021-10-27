@@ -18,7 +18,7 @@ router.get('', (req, res, next)=>{
                 }
             }
         );
-        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}&number=100`);
+        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}&number=100&addRecipeInformation=true`);
         Promise.all([
             recipeDb,
             recipeApi
@@ -26,7 +26,17 @@ router.get('', (req, res, next)=>{
         .then((response)=>{
             /*RESULTADOS EN <recipeApi.data.results>*/
             var [recipeDb, recipeApi] = response;
-            let allRecipes = [...recipeDb, ...recipeApi.data.results];
+            let minRecipeApi = [];
+            recipeApi.data.results.map((recipes)=>{
+                let obj = {
+                    id: recipes.id,
+                    name: recipes.title,
+                    score: recipes.spoonacularScore,
+                    img: recipes.image
+                }
+                minRecipeApi.push(obj);
+            })
+            let allRecipes = [...recipeDb, ...minRecipeApi];
             if(allRecipes.length > 0){
                 res.send(allRecipes);
             }else{
@@ -36,7 +46,7 @@ router.get('', (req, res, next)=>{
     }else{
         /*MOSTRAR TODOS LOS RESULTADOS*/
         let recipeDb = Recipe.findAll();
-        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100`);
+        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`);
         Promise.all([
             recipeDb,
             recipeApi
@@ -68,9 +78,13 @@ router.get('/:id', (req, res)=>{
             let recipeApi = {
                 name: response.data.title,
                 description: response.data.summary,
+                score: response.data.spoonacularScore,
+                healthy: response.data.healthScore,
                 howto: response.data.instructions,
+                diet: response.data.diets,
                 img: response.data.image
             }
+            console.log(response.data);
             res.send(recipeApi);
         })
     }
