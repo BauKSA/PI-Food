@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { Recipe } = require('../db');
 const {Sequelize} = require('sequelize');
 const axios = require('axios');
+const {API_KEY} = process.env;
 
 const router = Router();
 
@@ -16,26 +17,26 @@ router.get('', (req, res, next)=>{
                     }
                 }
             }
-        )
-        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=18df499b8a534178a8e11de478496ebc&query=${name}&number=100`)
+        );
+        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}&number=100`);
         Promise.all([
             recipeDb,
             recipeApi
         ])
         .then((response)=>{
-            /*RESULTS ARE IN <recipeApi.data.results>*/
+            /*RESULTADOS EN <recipeApi.data.results>*/
             var [recipeDb, recipeApi] = response;
             let allRecipes = [...recipeDb, ...recipeApi.data.results];
             if(allRecipes.length > 0){
                 res.send(allRecipes);
             }else{
-                res.send(`No hubo resultados para la busqueda ${name}`);
+                res.send(name);
             }
         })
     }else{
         /*MOSTRAR TODOS LOS RESULTADOS*/
         let recipeDb = Recipe.findAll();
-        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=18df499b8a534178a8e11de478496ebc&number=100`)
+        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100`);
         Promise.all([
             recipeDb,
             recipeApi
@@ -50,9 +51,8 @@ router.get('', (req, res, next)=>{
 
 router.get('/:id', (req, res)=>{
     let recipeId = req.params.id;
-    if(id.length > 10){
-        let filterRecipe;
-        let recipeDb = Recipe.findAll(
+    if(recipeId.length > 10){
+        Recipe.findAll(
             {
                 where: {
                     id: recipeId
@@ -60,11 +60,17 @@ router.get('/:id', (req, res)=>{
             }
         )
         .then((response)=>{
-            res.send(recipeDb);
+            res.send(response);
         })
     }else{
-        let recipeApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=18df499b8a534178a8e11de478496ebc&id=${recipeId}`)
+        axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`)
         .then((response)=>{
+            let recipeApi = {
+                name: response.data.title,
+                description: response.data.summary,
+                howto: response.data.instructions,
+                img: response.data.image
+            }
             res.send(recipeApi);
         })
     }
