@@ -1,9 +1,10 @@
 import './App.css';
+import AllRecipes from './components/allRecipes';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Food</h1>
+      <AllRecipes/>
     </div>
   );
 }

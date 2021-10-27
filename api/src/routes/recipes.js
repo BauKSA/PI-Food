@@ -53,7 +53,17 @@ router.get('', (req, res, next)=>{
         ])
         .then((response)=>{
             var [recipeDb, recipeApi] = response;
-            let allRecipes = [...recipeDb, ...recipeApi.data.results];
+            let minRecipeApi = [];
+            recipeApi.data.results.map((recipes)=>{
+                let obj = {
+                    id: recipes.id,
+                    name: recipes.title,
+                    score: recipes.spoonacularScore,
+                    img: recipes.image
+                }
+                minRecipeApi.push(obj);
+            })
+            let allRecipes = [...recipeDb, ...minRecipeApi];
             res.send(allRecipes);
         })
     }
