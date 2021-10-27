@@ -7,6 +7,11 @@ const initialState = {
 
 export default function reducer(state = initialState, actions){
     switch(actions.type){
+        case SEARCH_ALL:
+            return{
+                ...state,
+                recipes: actions.payload
+            }
         case SEARCH_BY_NAME:
             return{
                 ...state,
