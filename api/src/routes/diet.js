@@ -6,7 +6,6 @@ const router = Router();
 
 router.get('/:diet', (req, res, next)=>{
     let diet = req.params.diet;
-    console.log(diet);
     axios.get(`https://api.spoonacular.com/recipes/complexSearch?diet=${diet}&number=100&addRecipeInformation=true&apiKey=${API_KEY}`)
     .then((response)=>{
         res.send(response.data.results);
