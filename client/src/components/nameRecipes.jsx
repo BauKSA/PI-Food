@@ -8,7 +8,7 @@ class NameRecipes extends React.Component{
         this.state = {
             search: '',
             pag: 0,
-            recipes: []
+            recipes: [],
         };
         this.paginado = ()=>{
                 if(this.props.recipes){
@@ -16,7 +16,9 @@ class NameRecipes extends React.Component{
                     let pagRecipes = [];
                     if(this.state.pag * 9 <= results.length){
                         for(let i = 0; i < 9; i++){
-                            pagRecipes.push(results[(this.state.pag * 9) + i]);
+                            if(results[(this.state.pag * 9) + i]){
+                                pagRecipes.push(results[(this.state.pag * 9) + i]);
+                            }
                         }
                     }
                     return pagRecipes;
@@ -24,11 +26,16 @@ class NameRecipes extends React.Component{
         }
         this.nextPage = (e)=>{
             e.preventDefault();
-            this.setState({
-                ...this.state,
-                pag: this.state.pag + 1
-            })
-            console.log(this.state.pag)
+            let results = this.props.recipes;
+            if(results.length < ((this.state.pag + 2) * 9)){
+                e.target.disabled = true;
+            }    
+            if(results.length >= ((this.state.pag + 1) * 9)){
+                this.setState({
+                    ...this.state,
+                    pag: this.state.pag + 1
+                })
+            }
         }
     }
     
@@ -50,7 +57,7 @@ class NameRecipes extends React.Component{
                             })
                         }
                     </div>
-                    <button onClick={this.nextPage}>NEXT</button>
+                    <button onClick={this.nextPage} id="botonNext">NEXT</button>
                 </div>    
             )
         }else{
