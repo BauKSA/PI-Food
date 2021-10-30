@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { searchByName } from "../store/actions"
+import { searchByName, getById } from "../store/actions"
+import {getOrder, setOrder} from '../funciones/orderFunctions';
+import { Link } from 'react-router-dom';
 
 class NameRecipes extends React.Component{
     constructor(props){
@@ -10,10 +12,12 @@ class NameRecipes extends React.Component{
             pag: 0,
             recipes: [],
             order: '',
+            recipeInfo: [],
+            recipe: false
         };
         this.paginado = ()=>{
                 if(this.props.recipes){
-                    let results = this.props.recipes;
+                    let results = getOrder(this.state.order, this.props.recipes);
                     let pagRecipes = [];
                     if(this.state.pag * 9 <= results.length){
                         for(let i = 0; i < 9; i++){
@@ -52,64 +56,12 @@ class NameRecipes extends React.Component{
                 })
             }
         }
-        this.aToZ = (e)=>{
-            if(e){
-                e.preventDefault();
-            }
-            if(this.props.recipes){
-                let results = this.props.recipes;
-                results.sort((a, b)=>{
-                    if (a.name > b.name) {
-                        return 1;
-                      }
-                      if (a.name < b.name) {
-                        return -1;
-                      }
-                      return 0;
-                })
-                let pagRecipes = [];
-                if(this.state.pag * 9 <= results.length){
-                    for(let i = 0; i < 9; i++){
-                        if(results[(this.state.pag * 9) + i]){
-                            pagRecipes.push(results[(this.state.pag * 9) + i]);
-                        }
-                    }
-                }
-                return pagRecipes;
-            }
-        }
-        this.zToA = (e)=>{
-            if(e){
-                e.preventDefault();
-            }
-            if(this.props.recipes){
-                let results = this.props.recipes;
-                results.sort((a, b)=>{
-                    if (a.name > b.name) {
-                        return -1;
-                      }
-                      if (a.name < b.name) {
-                        return 1;
-                      }
-                      return 0;
-                })
-                let pagRecipes = [];
-                if(this.state.pag * 9 <= results.length){
-                    for(let i = 0; i < 9; i++){
-                        if(results[(this.state.pag * 9) + i]){
-                            pagRecipes.push(results[(this.state.pag * 9) + i]);
-                        }
-                    }
-                }
-                return pagRecipes;
-            }
-        }
         this.onSubmit = (e)=>{
             e.preventDefault();
             this.props.searchByName(this.state.search);
             setTimeout(()=>{
                 this.reset();
-            }, 500)
+            }, 1000)
         }
         this.onInputChange = (e)=>{
             this.setState({
@@ -117,32 +69,34 @@ class NameRecipes extends React.Component{
                 search: e.target.value
             })
         }
-        this.setOrder = function(or){
+        this.showInfo = (e)=>{
+            e.preventDefault();
+            console.log(e.target.id)
+            this.props.getById(e.target.id)
             this.setState({
                 ...this.state,
-                order: or
+                recipeInfo: this.props.recipes,
+                recipe: true
             })
         }
         this.reset = ()=>{
+            if(document.getElementById("botonNext") && document.getElementById("botonBack")){
+                document.getElementById("botonNext").disabled = false;
+                document.getElementById("botonBack").disabled = true;
+            }
             this.setState({
                 ...this.state,
                 pag: 0,
-                order: ''
+                order: '',
+                recipeInfo: [],
+                recipe: false
             })
         }
     }
     
     render() {
-        switch(this.state.order){
-            case 'AZ':
-                var results = this.aToZ();
-                break;
-            case 'ZA':
-                var results = this.zToA();
-            default:
-                var results = this.paginado();
-        }
-        if(results[0]){
+        let results = this.paginado();
+        if(results[0] && !this.state.recipe){
             return (
                 <div>
                     <div>
@@ -152,8 +106,11 @@ class NameRecipes extends React.Component{
                         </form>
                     </div>
                     <div>
-                        <button onClick={()=>{this.setOrder('AZ')}}>A to Z</button>
-                        <button onClick={()=>{this.setOrder('ZA')}}>Z to A</button>
+                        <h5>SORT BY</h5>
+                        <button onClick={()=>{setOrder('AZ', this)}}>A to Z</button>
+                        <button onClick={()=>{setOrder('ZA', this)}}>Z to A</button>
+                        <button onClick={()=>{setOrder('100', this)}}>SCORE MAX to MIN</button>
+                        <button onClick={()=>{setOrder('000', this)}}>SCORE MIN to MAX</button>
                     </div>
                     <div>
                         {
@@ -162,6 +119,7 @@ class NameRecipes extends React.Component{
                                     <div key={result.id}>
                                         <h3>{result.name}</h3>
                                         <img src={result.img}/>
+                                        <button id={result.id} onClick={this.showInfo}>Show</button>
                                     </div>
                                 )
                             })
@@ -171,7 +129,7 @@ class NameRecipes extends React.Component{
                     <button onClick={this.nextPage} id="botonNext">NEXT</button>
                 </div>    
             )
-        }else{
+        }else if(this.state.recipeInfo[0]){
             return(
                 <div>
                     <div>
@@ -181,7 +139,19 @@ class NameRecipes extends React.Component{
                         </form>
                     </div>
                     <div>
-                        BUSCAR
+                        {this.state.recipeInfo[0].name}
+                    </div>
+                </div>
+            )
+        }else{
+            console.log(this.state.recipeInfo)
+            return(
+                <div>
+                    <div>
+                        <form onSubmit={this.onSubmit}>
+                            <input type="text" value={this.state.search} onChange={this.onInputChange}/>
+                            <button id="botonSearch">SEARCH</button>
+                        </form>
                     </div>
                 </div>
             )
@@ -195,7 +165,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    searchByName
+    searchByName,
+    getById
 }
 const conexion = connect(mapStateToProps, mapDispatchToProps)
 export default  conexion(NameRecipes);
