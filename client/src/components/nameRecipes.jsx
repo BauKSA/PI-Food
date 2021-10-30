@@ -31,11 +31,26 @@ class NameRecipes extends React.Component{
                 e.target.disabled = true;
             }    
             if(results.length >= ((this.state.pag + 1) * 9)){
+                document.getElementById("botonBack").disabled = false;
                 this.setState({
                     ...this.state,
                     pag: this.state.pag + 1
                 })
             }
+        }
+        this.backPage = (e)=>{
+            e.preventDefault();
+            if((this.state.pag - 1) <= 0){
+                e.target.disabled = true;
+            }
+            if(this.state.pag > 0){
+                document.getElementById("botonNext").disabled = false;
+                this.setState({
+                    ...this.state,
+                    pag: this.state.pag - 1
+                })
+            }
+
         }
     }
     
@@ -57,6 +72,7 @@ class NameRecipes extends React.Component{
                             })
                         }
                     </div>
+                    <button onClick={this.backPage} id="botonBack">BACK</button>
                     <button onClick={this.nextPage} id="botonNext">NEXT</button>
                 </div>    
             )
