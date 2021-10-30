@@ -16,7 +16,7 @@ function SearchBar(props) {
         <div>
             <form onSubmit={onSubmit}>
                 <input type="text" value={search} onChange={onInputChange}/>
-                <button>SEARCH</button>
+                <button id="botonSearch">SEARCH</button>
             </form>
         </div>
     )

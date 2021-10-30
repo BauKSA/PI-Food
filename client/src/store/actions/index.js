@@ -17,8 +17,7 @@ export function searchAll(){
     }
 }
 
-export function searchByName(name, pag){
-    console.log(pag)
+export function searchByName(name){
     return function(dispatch){
         axios.get(`http://localhost:3002/api/recipes?name=${name}`)
         .then((response)=>{

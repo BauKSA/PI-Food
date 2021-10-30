@@ -14,7 +14,7 @@ function App() {
       </Route>
       <Route path="/search/byname">
         <div className="App">
-          <Search/>
+
           <NameRecipes/>
         </div>
       </Route>
