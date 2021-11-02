@@ -16,10 +16,16 @@ export function searchByName(name){
     }
 }
 
-export function getById(id){
+export function getById(id, obj){
     return function(dispatch){
+        console.log("estoy en el getByID")
         axios.get(`http://localhost:3002/api/recipes/${id}`)
         .then((response)=>{
+            console.log(response)
+            obj.setState({
+                recipe: true
+            })
+            console.log(obj.state.recipe)
             dispatch({
                 type: GET_BY_ID,
                 payload: response.data

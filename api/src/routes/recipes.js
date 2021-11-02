@@ -94,6 +94,7 @@ router.get('/:id', (req, res)=>{
                 diet: response.data.diets,
                 img: response.data.image
             }
+            console.log(recipeApi)
             res.send(recipeApi);
         })
     }

@@ -52,6 +52,7 @@ export function getOrder(order, array){
 export function setOrder (or, obj){
     obj.setState({
         ...obj.state,
+        pag: 0,
         order: or
     })
 }

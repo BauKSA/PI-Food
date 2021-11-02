@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { searchByName, getById } from "../store/actions"
 import {getOrder, setOrder} from '../funciones/orderFunctions';
-import { Link } from 'react-router-dom';
 
 class NameRecipes extends React.Component{
     constructor(props){
@@ -16,7 +15,7 @@ class NameRecipes extends React.Component{
             recipe: false
         };
         this.paginado = ()=>{
-                if(this.props.recipes){
+                if(this.props.recipes && !this.state.recipe){
                     let results = getOrder(this.state.order, this.props.recipes);
                     let pagRecipes = [];
                     if(this.state.pag * 9 <= results.length){
@@ -27,6 +26,10 @@ class NameRecipes extends React.Component{
                         }
                     }
                     return pagRecipes;
+                }else if(this.state.recipe){
+                    return this.props.recipes
+                }else{
+                    return [0]
                 }
         }
         this.nextPage = (e)=>{
@@ -70,14 +73,8 @@ class NameRecipes extends React.Component{
             })
         }
         this.showInfo = (e)=>{
-            e.preventDefault();
-            console.log(e.target.id)
-            this.props.getById(e.target.id)
-            this.setState({
-                ...this.state,
-                recipeInfo: this.props.recipes,
-                recipe: true
-            })
+            e.preventDefault()
+            this.props.getById(e.target.id, this)
         }
         this.reset = ()=>{
             if(document.getElementById("botonNext") && document.getElementById("botonBack")){
@@ -129,7 +126,7 @@ class NameRecipes extends React.Component{
                     <button onClick={this.nextPage} id="botonNext">NEXT</button>
                 </div>    
             )
-        }else if(this.state.recipeInfo[0]){
+        }else if(this.state.recipe){
             return(
                 <div>
                     <div>
@@ -138,13 +135,21 @@ class NameRecipes extends React.Component{
                             <button id="botonSearch">SEARCH</button>
                         </form>
                     </div>
-                    <div>
-                        {this.state.recipeInfo[0].name}
-                    </div>
+                        <div>
+                            <img src={results.img}/>
+                            {results.name}
+                            <br/><br/>
+                            {results.description}
+                            <br/><br/>
+                            {results.score}
+                            <br/><br/>
+                            {results.healthy}
+                            <br/><br/>
+                            {results.howto}
+                        </div>
                 </div>
             )
         }else{
-            console.log(this.state.recipeInfo)
             return(
                 <div>
                     <div>
