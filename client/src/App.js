@@ -1,6 +1,8 @@
 import './App.css';
 import NameRecipes from './components/nameRecipes';
 import { Switch, Route } from 'react-router-dom';
+import PostRecipe from './components/postRecipe';
+
 
 function App() {
   return (
@@ -12,7 +14,6 @@ function App() {
       </Route>
       <Route path="/search/byname">
         <div className="App">
-
           <NameRecipes/>
         </div>
       </Route>
@@ -28,7 +29,7 @@ function App() {
       </Route>
       <Route path="/addrecipe">
         <div className="App">
-
+          <PostRecipe/>
         </div>
       </Route>
     </Switch>

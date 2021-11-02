@@ -1,6 +1,7 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('recipe', {
@@ -33,6 +34,12 @@ module.exports = (sequelize) => {
 
     howto: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    img: {
+      type: DataTypes.TEXT,
+      defaultValue: "./recipe-default-icon.jpeg",
       allowNull: false,
     }
   });

@@ -27,3 +27,13 @@ export function getById(id){
         })
     }
 }
+
+export function addRecipe(data){
+        return function(dispatch){
+            axios.post('http://localhost:3002/api/addrecipe', data)
+            .then((response)=>{
+                console.log(response);
+            })
+        }
+        
+}

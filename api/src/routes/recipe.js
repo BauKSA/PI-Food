@@ -12,7 +12,7 @@ router.post('/', async (req, res, next)=>{
         healthy,
         howto
     })
-    res.send(newRecipe);
+    res.end(JSON.stringify(newRecipe));
 });
 
 module.exports = router;
