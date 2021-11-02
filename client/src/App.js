@@ -2,6 +2,7 @@ import './App.css';
 import NameRecipes from './components/nameRecipes';
 import { Switch, Route } from 'react-router-dom';
 import PostRecipe from './components/postRecipe';
+import Home from './components/Home';
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <Switch>
       <Route path="/home">
         <div className="App">
-          HOME
+          <Home/>
         </div>
       </Route>
       <Route path="/search/byname">
