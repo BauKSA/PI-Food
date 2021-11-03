@@ -25,10 +25,10 @@ export function getOrder(order, array){
         case '100':
             array.sort((a, b)=>{
                 if (a.score > b.score) {
-                    return 1;
+                    return -1;
                 }
                 if (a.score < b.score) {
-                    return -1;
+                    return 1;
                 }
                 return 0;
             });
@@ -36,10 +36,10 @@ export function getOrder(order, array){
         case '000':
             array.sort((a, b)=>{
                 if (a.score > b.score) {
-                    return -1;
+                    return 1;
                 }
                 if (a.score < b.score) {
-                    return 1;
+                    return -1;
                 }
                 return 0;
             });

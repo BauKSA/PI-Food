@@ -1,0 +1,84 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.title-container{
+    background-color: rgb(20, 20, 20);
+    border-radius: 5em;
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-top: 1em;
+    padding: 0.5em;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.title{
+    color: whitesmoke;
+}
+
+.info-container{
+    background-color: whitesmoke;
+    border-style: solid;
+    border-width: 0.5em;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+}
+
+.img-container{
+    width: 50vw;
+}
+
+.image{
+    align-self: center;
+    border-style: solid;
+    border-width: 0.2em;
+    border-radius: 2.5em;
+}
+
+.info{
+    background-color: white;
+    border-style: double;
+    border-width: 0.5em;
+    border-radius: 1em;
+    box-shadow: 10px 5px 20px black;
+    padding: 1em;
+    margin: 4em;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 50vw;
+}
+
+.scores{
+    display: flex;
+    flex-direction: column;
+}
+
+.pro{
+    align-self: center;
+}
+
+.diets{
+    margin-top: 1em;
+    background-color: gainsboro;
+    border-radius: 1em;
+}
+
+.principal-diets{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: gray;
+    border-radius: 1em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.dietP{
+    font-weight: bold;
+}

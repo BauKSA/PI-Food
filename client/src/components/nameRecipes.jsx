@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { searchByName, getById } from "../store/actions"
 import {getOrder, setOrder} from '../funciones/orderFunctions';
+import RecipeInfo from './RecipeInfo';
 
 class NameRecipes extends React.Component{
     constructor(props){
@@ -61,10 +62,8 @@ class NameRecipes extends React.Component{
         }
         this.onSubmit = (e)=>{
             e.preventDefault();
+            this.reset();
             this.props.searchByName(this.state.search);
-            setTimeout(()=>{
-                this.reset();
-            }, 1000)
         }
         this.onInputChange = (e)=>{
             this.setState({
@@ -86,6 +85,7 @@ class NameRecipes extends React.Component{
                 pag: 0,
                 order: '',
                 recipeInfo: [],
+                recipes: [],
                 recipe: false
             })
         }
@@ -127,26 +127,10 @@ class NameRecipes extends React.Component{
                 </div>    
             )
         }else if(this.state.recipe){
+            console.log(results.diet)
             return(
                 <div>
-                    <div>
-                        <form onSubmit={this.onSubmit}>
-                            <input type="text" value={this.state.search} onChange={this.onInputChange}/>
-                            <button id="botonSearch">SEARCH</button>
-                        </form>
-                    </div>
-                        <div>
-                            <img src={results.img}/>
-                            {results.name}
-                            <br/><br/>
-                            {results.description}
-                            <br/><br/>
-                            {results.score}
-                            <br/><br/>
-                            {results.healthy}
-                            <br/><br/>
-                            {results.howto}
-                        </div>
+                    <RecipeInfo obj={results} diets={results.diet}/>
                 </div>
             )
         }else{
