@@ -10,9 +10,7 @@ class NameRecipes extends React.Component{
         this.state = {
             search: '',
             pag: 0,
-            recipes: [],
             order: '',
-            recipeInfo: [],
             recipe: false
         };
         this.paginado = ()=>{
@@ -28,7 +26,7 @@ class NameRecipes extends React.Component{
                     }
                     return pagRecipes;
                 }else if(this.state.recipe){
-                    return this.props.recipes
+                    return this.props.recipe
                 }else{
                     return [0]
                 }
@@ -63,7 +61,7 @@ class NameRecipes extends React.Component{
         this.onSubmit = (e)=>{
             e.preventDefault();
             this.reset();
-            this.props.searchByName(this.state.search);
+            this.props.searchByName(this.state.search, this);
         }
         this.onInputChange = (e)=>{
             this.setState({
@@ -84,8 +82,15 @@ class NameRecipes extends React.Component{
                 ...this.state,
                 pag: 0,
                 order: '',
-                recipeInfo: [],
                 recipes: [],
+                recipe: false
+            })
+        }
+
+        this.back = (e)=>{
+            e.preventDefault();
+            this.setState({
+                ...this.state,
                 recipe: false
             })
         }
@@ -122,8 +127,11 @@ class NameRecipes extends React.Component{
                             })
                         }
                     </div>
-                    <button onClick={this.backPage} id="botonBack">BACK</button>
-                    <button onClick={this.nextPage} id="botonNext">NEXT</button>
+                    <div>
+                        <button onClick={this.backPage} id="botonBack">BACK</button>
+                        {this.state.pag + 1}
+                        <button onClick={this.nextPage} id="botonNext">NEXT</button>
+                    </div>
                 </div>    
             )
         }else if(this.state.recipe){
@@ -131,6 +139,7 @@ class NameRecipes extends React.Component{
             return(
                 <div>
                     <RecipeInfo obj={results} diets={results.diet}/>
+                    <button onClick={this.back}>GO BACK</button>
                 </div>
             )
         }else{
@@ -150,7 +159,8 @@ class NameRecipes extends React.Component{
 
 function mapStateToProps(state) {
     return {
-        recipes: state.recipes
+        recipes: state.recipes,
+        recipe: state.recipe
     }
 }
 const mapDispatchToProps = {

@@ -2,7 +2,7 @@ import { SEARCH_BY_NAME, SEARCH_BY_DIET, GET_BY_ID} from '../actions';
 
 const initialState = {
     recipes: [],
-    diets: []
+    recipe: []
 }
 
 export default function reducer(state = initialState, actions){
@@ -15,7 +15,7 @@ export default function reducer(state = initialState, actions){
         case GET_BY_ID:
             return{
                 ...state,
-                recipes:actions.payload
+                recipe: actions.payload
             }
         default:
             return state;
