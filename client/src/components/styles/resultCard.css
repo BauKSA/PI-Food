@@ -1,0 +1,55 @@
+.card-main{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2em;
+}
+
+.card-img{
+    width: 25vw;
+    margin-bottom: 2em;
+}
+
+.card-title{
+    font-size: xx-large;
+    background-color: rgb(25, 25, 25);
+    padding: 0.1em;
+    border-radius: 0.25em;
+    color: whitesmoke;
+}
+
+.result-img{
+    border-radius: 1em;
+}
+
+.card-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-score{
+    text-align: left;
+    background-color: gray;
+    border-radius: 1em;
+    width: 25vw;
+    margin-bottom: 0.1em;
+}
+
+.card-healthy{
+    background-color: rgb(200, 200, 200);
+    text-align: left;
+    border-radius: 1em;
+    width: 25vw;
+}
+
+.zorongo{
+    background-color: rgb(225, 225, 225);
+    width: 25vw;
+    border-style: solid;
+    border-radius: 1em;
+    margin-left: 1em;
+    padding: 1em;
+}
+
+.score-diet{
+    padding: 1em;
+}

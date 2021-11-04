@@ -32,7 +32,11 @@ router.get('', (req, res, next)=>{
                     id: recipes.id,
                     name: recipes.title,
                     score: recipes.spoonacularScore,
-                    img: recipes.image
+                    img: recipes.image,
+                    vegetarian: recipes.vegetarian,
+                    vegan: recipes.vegan,
+                    glutenfree: recipes.glutenFree,
+                    dairyfree: recipes.dairyFree
                 }
                 minRecipeApi.push(obj);
             })
@@ -59,7 +63,7 @@ router.get('', (req, res, next)=>{
                     id: recipes.id,
                     name: recipes.title,
                     score: recipes.spoonacularScore,
-                    img: recipes.image
+                    img: recipes.image,
                 }
                 minRecipeApi.push(obj);
             })

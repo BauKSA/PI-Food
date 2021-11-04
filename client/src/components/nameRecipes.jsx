@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { searchByName, getById } from "../store/actions"
 import {getOrder, setOrder} from '../funciones/orderFunctions';
 import RecipeInfo from './RecipeInfo';
+import ResultCard from './ResultCard';
+import './styles/nameRecipes.css';
 
 class NameRecipes extends React.Component{
     constructor(props){
@@ -118,10 +120,9 @@ class NameRecipes extends React.Component{
                         {
                             results.map((result)=>{
                                 return(
-                                    <div key={result.id}>
-                                        <h3>{result.name}</h3>
-                                        <img src={result.img}/>
-                                        <button id={result.id} onClick={this.showInfo}>Show</button>
+                                    <div key={result.id} className="card-container">
+                                        <ResultCard result={result}/>
+                                        <button id={result.id} onClick={this.showInfo} className="button-show">Show</button>
                                     </div>
                                 )
                             })
