@@ -99,8 +99,12 @@ class NameRecipes extends React.Component{
     }
     
     render() {
+        if(this.state.pag < 1 && document.getElementById("botonBack")){
+            document.getElementById("botonBack").disabled = true;
+        }
         let results = this.paginado();
         if(results[0] && !this.state.recipe){
+            console.log(results);
             return (
                 <div>
                     <div className="search-container">
@@ -139,8 +143,24 @@ class NameRecipes extends React.Component{
                     </div>
                 </div>    
             )
+        }else if(results[0] === 0 && !this.state.recipe){
+            return(
+                <div>
+                    <div className="search-container">
+                        <form onSubmit={this.onSubmit}>
+                            <span id="only-search" className="back-form">
+                                <input className="input-search" type="text" value={this.state.search} onChange={this.onInputChange} />
+                                <button className="input-button" id="botonSearch">SEARCH</button>
+                            </span>
+                        </form>
+                    </div>
+                    <div className="any">
+                        ANY RESULTS
+                    </div>
+                </div>
+
+            )
         }else if(this.state.recipe){
-            console.log(results.diet)
             return(
                 <div>
                     <RecipeInfo obj={results} diets={results.diet}/>

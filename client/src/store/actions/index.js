@@ -21,6 +21,7 @@ export function searchByName(name, obj){
 
 export function getById(id, obj){
     return function(dispatch){
+        console.log(id)
         console.log("estoy en el getByID")
         axios.get(`http://localhost:3002/api/recipes/${id}`)
         .then((response)=>{

@@ -102,6 +102,12 @@
 #only-search{
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
+    margin-bottom: 5em;
+}
+
+.any{
+    font-weight: bolder;
+    margin: 5em;
 }
 
 .pButton-container{

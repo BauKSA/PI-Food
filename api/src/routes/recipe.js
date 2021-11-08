@@ -4,14 +4,18 @@ const { Recipe, Diet } = require('../db');
 const router = Router();
 
 router.post('/', async (req, res, next)=>{
-    const {name, description, score, healthy, howto, diets} = req.body;
+    const {name, description, score, healthy, howto, diets, vegetarian, vegan, glutenfree, dairyfree} = req.body;
     const newRecipe = await Recipe.create({
         name,
         description,
         score,
         healthy,
         howto,
-        diets
+        diets,
+        vegetarian,
+        vegan,
+        glutenfree,
+        dairyfree
     })
 
     const newDiet = await Diet.findAll({

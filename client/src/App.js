@@ -13,19 +13,9 @@ function App() {
           <Home/>
         </div>
       </Route>
-      <Route exact path="/search/byname">
+      <Route exact path="/search">
         <div className="App">
           <NameRecipes/>
-        </div>
-      </Route>
-      <Route exact path="/search/bydiet">
-        <div className="App">
-
-        </div>
-      </Route>
-      <Route exact path="/diets">
-        <div className="App">
-
         </div>
       </Route>
       <Route exact path="/addrecipe">

@@ -37,10 +37,28 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    img: {
-      type: DataTypes.TEXT,
-      defaultValue: "./recipe-default-icon.jpeg",
-      allowNull: false,
-    }
+    diet: {
+      type: DataTypes.ARRAY(DataTypes.STRING)
+    },
+
+    vegetarian: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+
+    vegan: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+
+    glutenfree: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+
+    dairyfree: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
   });
 };

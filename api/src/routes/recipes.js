@@ -44,7 +44,7 @@ router.get('', (req, res, next)=>{
             if(allRecipes.length > 0){
                 res.send(allRecipes);
             }else{
-                res.send(name);
+                res.send(false);
             }
         })
     }else{
@@ -64,6 +64,10 @@ router.get('', (req, res, next)=>{
                     name: recipes.title,
                     score: recipes.spoonacularScore,
                     img: recipes.image,
+                    vegetarian: recipes.vegetarian,
+                    vegan: recipes.vegan,
+                    glutenfree: recipes.glutenFree,
+                    dairyfree: recipes.dairyFree
                 }
                 minRecipeApi.push(obj);
             })
@@ -84,6 +88,7 @@ router.get('/:id', (req, res)=>{
             }
         )
         .then((response)=>{
+            console.log(response)
             res.send(response);
         })
     }else{
