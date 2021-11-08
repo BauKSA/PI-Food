@@ -82,3 +82,59 @@
 .dietP{
     font-weight: bold;
 }
+
+.desc-how{
+    display: flex;
+    flex-direction: row;
+    margin: 2em;
+}
+
+.description-container{
+    width: 50vw;
+    border-style: double;
+    border-width: 0.5em;
+    border-radius: 1em;
+    padding: 1em;
+    padding-top: 0;
+}
+
+.desc-title{
+    background-color: rgb(100, 100, 100);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    padding: 1em;
+    margin-bottom: 0.5em;
+}
+
+#description{
+    margin: 0;
+    background-color: rgb(150, 150, 150);
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding: 0.5em;
+}
+
+.howto-container{
+    width: 50vw;
+    border-style: double;
+    border-width: 0.5em;
+    border-radius: 1em;
+    padding: 1em;
+    padding-top: 0;
+}
+
+.how-title{
+    background-color: rgb(100, 100, 100);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    padding: 1em;
+    margin-bottom: 0.5em;
+}
+
+#howto{
+    margin: 0;
+    background-color: rgb(150, 150, 150);
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding: 0.5em;
+}

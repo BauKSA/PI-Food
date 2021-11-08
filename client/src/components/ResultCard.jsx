@@ -25,7 +25,7 @@ class ResultCard extends React.Component{
 
     render(){
             return(
-                <div className="card-main">
+                <div className="card-main" key={this.props.result.id}>
                     <div className="card-img">
                         <img src={this.props.result.img} alt={this.props.result.name} className="result-img"/>
                     </div>
@@ -41,7 +41,7 @@ class ResultCard extends React.Component{
                             <div  className="card-healthy">
                                 {this.getDiet().map((diet)=>{
                                     return(
-                                        <div id="diet">
+                                        <div id="diet" key={diet}>
                                             <span className="score-diet">{diet}</span>
                                             <br/>
                                         </div>

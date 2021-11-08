@@ -2,9 +2,6 @@ import React from "react";
 import './styles/recipeInfo.css'
 
 class RecipeInfo extends React.Component{
-    constructor(props){
-        super(props)
-    }
 
     render(){
         let diets = [];
@@ -29,7 +26,7 @@ class RecipeInfo extends React.Component{
                 <br/><br/>
                 <div className="info-container">
                     <div className="img-container">
-                        <img className="image" src={recipe.img}/>
+                        <img className="image" src={recipe.img} alt={recipe.name}/>
                     </div>
                     <div className="info">
                         <div className="scores">
@@ -42,8 +39,10 @@ class RecipeInfo extends React.Component{
                                     diets.map((diet)=>{
                                         if(diet === "vegetarian" || diet === "vegan" || diet === "gluten free" || diet === "dairy free"){
                                             return(
-                                                <p className="dietP">&nbsp;&#128154;{diet}&nbsp;</p>
+                                                <p className="dietP" key={diet}>&nbsp;&#10084;&nbsp;{diet}&nbsp;</p>
                                             )
+                                        }else{
+                                            return null;
                                         }
                                     })
                                 }
@@ -52,9 +51,10 @@ class RecipeInfo extends React.Component{
                             {
                                     diets.map((diet)=>{
                                         if(diet === "vegetarian" || diet === "vegan" || diet === "gluten free" || diet === "dairy free"){
+                                            return null;
                                         }else{
                                             return(
-                                                <p className="dietS">&nbsp;{diet}&nbsp;</p>
+                                                <p className="dietS" key={diet}>&nbsp;{diet}&nbsp;</p>
                                             )
                                         }
                                     })
@@ -63,8 +63,20 @@ class RecipeInfo extends React.Component{
                         </div>
                     </div>
                 </div>
-                <div id="description"></div>
-                <div id="howto"></div>
+                <div className="desc-how">
+                    <div className="description-container">
+                        <div>
+                            <h3 className="desc-title">Description</h3>
+                        </div>
+                        <div id="description"></div>
+                    </div>
+                    <div className="howto-container">
+                        <div>
+                            <h3 className="how-title">How to</h3>
+                        </div>
+                        <div id="howto"></div>
+                    </div>
+                </div>
             </div>
         )
     }

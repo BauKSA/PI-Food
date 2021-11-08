@@ -5,6 +5,7 @@ import {getOrder, setOrder} from '../funciones/orderFunctions';
 import RecipeInfo from './RecipeInfo';
 import ResultCard from './ResultCard';
 import './styles/nameRecipes.css';
+import { Link } from 'react-router-dom';
 
 class NameRecipes extends React.Component{
     constructor(props){
@@ -157,14 +158,19 @@ class NameRecipes extends React.Component{
                     <div className="any">
                         ANY RESULTS
                     </div>
+                    <div>
+                        <Link to="/addrecipe">
+                            <button className="button-create">Create it!</button>
+                        </Link>
+                    </div>
                 </div>
 
             )
         }else if(this.state.recipe){
             return(
                 <div>
-                    <RecipeInfo obj={results} diets={results.diet}/>
-                    <button onClick={this.back}>GO BACK</button>
+                    <RecipeInfo obj={results} diets={results.diet} key={results.id}/>
+                    <button id="goBack-button" onClick={this.back}>GO BACK</button>
                 </div>
             )
         }else{

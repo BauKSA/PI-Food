@@ -1,4 +1,4 @@
-import { SEARCH_BY_NAME, SEARCH_BY_DIET, GET_BY_ID} from '../actions';
+import { SEARCH_BY_NAME, GET_BY_ID} from '../actions';
 
 const initialState = {
     recipes: [],
