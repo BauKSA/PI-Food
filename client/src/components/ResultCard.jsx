@@ -36,12 +36,13 @@ class ResultCard extends React.Component{
                     </div>
                     <div className="zorongo">
                         <div className="card-score">
-                            <span className="score-diet">Score: {this.props.result.score}</span>
+                            <span className="score-diet">score: </span>
+                            <progress value={this.props.result.score} max="100" id="score-bar"/>
                         </div>
                         <div  className="card-healthy">
                             {this.getDiet().map((diet)=>{
                                 return(
-                                    <div>
+                                    <div id="diet">
                                         <span className="score-diet">{diet}</span>
                                         <br/>
                                     </div>

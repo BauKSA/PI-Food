@@ -27,11 +27,11 @@
 }
 
 .card-score{
-    text-align: left;
     background-color: gray;
     border-radius: 1em;
     width: 25vw;
     margin-bottom: 0.1em;
+    padding-bottom: 0.1em;
 }
 
 .card-healthy{
@@ -52,4 +52,11 @@
 
 .score-diet{
     padding: 1em;
+}
+
+#diet{
+    text-align: center;
+}
+
+#score-bar{
 }

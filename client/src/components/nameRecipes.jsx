@@ -103,18 +103,22 @@ class NameRecipes extends React.Component{
         if(results[0] && !this.state.recipe){
             return (
                 <div>
-                    <div>
-                        <form onSubmit={this.onSubmit}>
-                            <input type="text" value={this.state.search} onChange={this.onInputChange}/>
-                            <button id="botonSearch">SEARCH</button>
-                        </form>
+                    <div className="search-container">
+                            <form onSubmit={this.onSubmit}>
+                                <span className="back-form">
+                                    <input className="input-search" type="text" value={this.state.search} onChange={this.onInputChange}/>
+                                    <button className="input-button" id="botonSearch">SEARCH</button>
+                                </span>
+                            </form>
                     </div>
-                    <div>
-                        <h5>SORT BY</h5>
-                        <button onClick={()=>{setOrder('AZ', this)}}>A to Z</button>
-                        <button onClick={()=>{setOrder('ZA', this)}}>Z to A</button>
-                        <button onClick={()=>{setOrder('100', this)}}>SCORE MAX to MIN</button>
-                        <button onClick={()=>{setOrder('000', this)}}>SCORE MIN to MAX</button>
+                    <div className="sort-container">
+                        <span className="back">
+                            <h5 className="sort">SORT BY</h5>
+                            <button id="first-button" className="order-button" onClick={()=>{setOrder('AZ', this)}}>A to Z</button>
+                            <button className="order-button" onClick={()=>{setOrder('ZA', this)}}>Z to A</button>
+                            <button className="order-button" onClick={()=>{setOrder('100', this)}}>SCORE MAX to MIN</button>
+                            <button id="last-button" className="order-button" onClick={()=>{setOrder('000', this)}}>SCORE MIN to MAX</button>
+                        </span>
                     </div>
                     <div>
                         {
@@ -128,10 +132,10 @@ class NameRecipes extends React.Component{
                             })
                         }
                     </div>
-                    <div>
-                        <button onClick={this.backPage} id="botonBack">BACK</button>
-                        {this.state.pag + 1}
-                        <button onClick={this.nextPage} id="botonNext">NEXT</button>
+                    <div className="pButton-container">
+                        <button className="button-page" onClick={this.backPage} id="botonBack">BACK</button>
+                        <p className="page-number">{this.state.pag + 1}</p>
+                        <button className="button-page" onClick={this.nextPage} id="botonNext">NEXT</button>
                     </div>
                 </div>    
             )
@@ -145,13 +149,13 @@ class NameRecipes extends React.Component{
             )
         }else{
             return(
-                <div>
-                    <div>
-                        <form onSubmit={this.onSubmit}>
-                            <input type="text" value={this.state.search} onChange={this.onInputChange}/>
-                            <button id="botonSearch">SEARCH</button>
-                        </form>
-                    </div>
+                <div className="search-container">
+                    <form onSubmit={this.onSubmit}>
+                        <span id="only-search" className="back-form">
+                            <input className="input-search" type="text" value={this.state.search} onChange={this.onInputChange}/>
+                            <button className="input-button" id="botonSearch">SEARCH</button>
+                        </span>
+                    </form>
                 </div>
             )
         }

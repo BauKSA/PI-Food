@@ -5,4 +5,154 @@
 
 .button-show{
     margin-bottom: 1em;
+    border-style: none;
+    background-color: rgb(75, 75, 75);
+    font-size: xx-large;
+    color: whitesmoke;
+    border-radius: 0.1em;
+    transition: 0.5s;
+}
+
+.button-show:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 0px black;
+}
+
+.sort-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    padding-bottom: 2em;
+}
+
+.back{
+    align-self: center;
+    background-color: gray;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding: 0.2em;
+    padding-top: 0;
+}
+
+.sort{
+    margin-bottom: 0.5em;
+}
+
+.order-button{
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    border-style: none;
+    background-color: rgb(35, 35, 35);
+    color: whitesmoke;
+    padding: 0.5em;
+    transition: 0.2s;
+}
+
+#first-button{
+    border-bottom-left-radius: 1em;
+}
+
+#last-button{
+    border-bottom-right-radius: 1em;
+}
+
+.order-button:hover{
+    background-color: whitesmoke;
+    color: rgb(35, 35, 35);
+    cursor: pointer;
+}
+
+.search-container{
+    margin-top: 2em;
+}
+
+.back-form{
+    align-self: center;
+    background-color: rgb(100, 100, 100);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    padding: 2em;
+    padding-top: 1em;
+    padding-bottom: 1.25em;
+}
+
+.input-search{
+    margin-right: 0.25em;
+    border-style: none;
+}
+
+.input-button{
+    margin-left: 0.25em;
+    border-style: solid;
+    border-radius: 1em;
+    border-color: whitesmoke;
+    background: none;
+    color: whitesmoke;
+    padding: 0.5em;
+    transition: 0.2s;
+}
+
+.input-button:hover{
+    background-color: black;
+    cursor: pointer;
+}
+
+#only-search{
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.pButton-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.button-page{
+    font-size: large;
+    padding: 0.5em;
+    background-color: gray;
+    border-style: solid;
+    border-color: black;
+    transition: 0.25s;
+}
+
+#botonBack{
+    border-bottom-left-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    margin-right: 2em;
+}
+
+#botonNext{
+    border-bottom-right-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    margin-left: 2em;
+}
+
+.button-page:hover{
+    border-color: gray;
+    background-color: black;
+    color: gray;
+    cursor: pointer;
+}
+
+.button-page:disabled{
+    border-color: gray;
+    background-color: gray;
+    color: rgb(160, 160, 160);
+}
+
+.button-page:disabled:hover{
+    border-color: gray;
+    background-color: gray;
+    color: rgb(160, 160, 160);
+    cursor: default;
+}
+
+.page-number{
+    font-weight: bolder;
 }
