@@ -71,6 +71,18 @@ class NameRecipes extends React.Component{
         }
         this.onSubmit = (e)=>{
             e.preventDefault();
+            if(document.getElementById("first-button")){
+                document.getElementById("first-button").disabled = false;
+            }
+            if(document.getElementById("last-button")){
+                document.getElementById("last-button").disabled = false;
+            }
+            if(document.getElementById("100")){
+                document.getElementById("100").disabled = false;
+            }
+            if(document.getElementById("000")){
+                document.getElementById("000").disabled = false;
+            }
             this.reset();
             this.props.searchByName(this.state.search, this);
         }
@@ -206,7 +218,11 @@ class NameRecipes extends React.Component{
                     </div>
                     <div>
                         <Link to="/addrecipe">
-                            <button className="button-create">Create it!</button>
+                            <button className="button-create" onClick={()=>{
+                                document.getElementById("first-hButton").disabled = false;
+                                document.getElementById("middle-hButton").disabled = false;
+                                document.getElementById("last-hButton").disabled = true;
+                            }}>Create it!</button>
                         </Link>
                     </div>
                 </div>

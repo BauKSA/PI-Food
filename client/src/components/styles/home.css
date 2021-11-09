@@ -1,0 +1,44 @@
+.main-home{
+    display: flex;
+    flex-direction: column;
+    margin-top: -2em;
+}
+
+.home-container{
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    align-self: center;
+    padding: 2em;
+    border-style: double;
+    border-width: 1em;
+    border-color: black;
+    border-radius: 2em;
+    margin-bottom: 5em;
+}
+
+.home-img{
+    width: 25vw;
+}
+
+.homeInfo-container{
+    width: 25vw;
+}
+
+.home-sButton{
+    margin-top: 1em;
+    border-color: black;
+    background-color: black;
+    padding: 1em;
+    font-size: medium;
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 1em;
+    transition: 0.5s;
+}
+
+.home-sButton:hover{
+    cursor: pointer;
+    border-color: white;
+    box-shadow: 5px 5px black, -5px -5px black;
+}
