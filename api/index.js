@@ -34,6 +34,7 @@ conn.sync({ force: true }).then(() => {
     createTable(conn.models.Diet, "vegetarian");
     createTable(conn.models.Diet, "vegan");
     createTable(conn.models.Diet, "glutenFree");
+    createTable(conn.models.Diet, "dairyfre");
     console.log('%s listening at 3002'); // eslint-disable-line no-console
   });
 });

@@ -1,28 +1,38 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { addRecipe } from "../store/actions"
+import { addRecipe, getDiets } from "../store/actions"
 import {Link} from 'react-router-dom';
+import './styles/postRecipe.css';
 
 class PostRecipe extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            created: false
+            created: false,
+            diets: []
         }
         this.onSubmit = (e)=>{
             e.preventDefault();
             let diet = [];
-            if(document.getElementById("vegetarian").checked){
-                diet.push("vegetarian")
+            let vegetarian = false;
+            let vegan = false;
+            let glutenfree = false;
+            let dairyfree = false;
+            if(document.getElementById("vegetarian")?.checked){
+                diet.push("vegetarian");
+                vegetarian = true;
             }
-            if(document.getElementById("vegan").checked){
-                diet.push("vegan")
+            if(document.getElementById("vegan")?.checked){
+                diet.push("vegan");
+                vegan = true;
             }
-            if(document.getElementById("glutenfree").checked){
-                diet.push("gluten free")
+            if(document.getElementById("glutenfree")?.checked){
+                diet.push("gluten free");
+                glutenfree = true;
             }
-            if(document.getElementById("dairyfree").checked){
-                diet.push("dairy free")
+            if(document.getElementById("dairyfree")?.checked){
+                diet.push("dairy free");
+                dairyfree = true;
             }
             let obj = {
                 name: document.getElementById("name").value,
@@ -31,16 +41,21 @@ class PostRecipe extends React.Component{
                 healthy: document.getElementById("healthy").value,
                 howto: document.getElementById("howto").value,
                 diets: diet,
-                vegetarian: document.getElementById("vegetarian").checked,
-                vegan: document.getElementById("vegan").checked,
-                glutenfree: document.getElementById("glutenfree").checked,
-                dairyfree: document.getElementById("dairyfree").checked
+                vegetarian: vegetarian,
+                vegan: vegan,
+                glutenfree: glutenfree,
+                dairyfree: dairyfree
             }
             JSON.stringify(obj);
             this.props.addRecipe(obj)
             this.setState({
                 created: true
             })
+        }
+
+        this.getDiet = (e)=>{
+            e.preventDefault();
+            this.props.getDiets()
         }
     }
 
@@ -62,30 +77,89 @@ class PostRecipe extends React.Component{
             )
         }else{
             return(
-                <div>
-                    <form onSubmit={this.onSubmit}>
-                        name:<input type="text" id="name"></input>
-                        description:<textarea id="description"></textarea>
-                        score:<input type="range" id="score" min="1" max="100"></input>
-                        healthy:<input type="range" id="healthy" min="1" max="100"></input>
-                        howto:<textarea id="howto"></textarea>
-                        vegetarian:<input type="checkbox" id="vegetarian"/>
-                        vegan:<input type="checkbox" id="vegan"/>
-                        glutenfree:<input type="checkbox" id="glutenfree"/>
-                        dairyfree:<input type="checkbox" id="dairyfree"/>
-                        <button type="submit">SEND</button>
-                    </form>
-                    <Link to="/home">
-                        <button>GO BACK</button>
-                    </Link>
+                <div className="form-container">
+                    <div className="create-form">
+                        <form onSubmit={this.onSubmit}>
+                            <table summary="Create a new recipe!" className="table-form">
+                                <tbody>
+                                    <tr>
+                                        <th className="label-form">Name</th>
+                                        <td>
+                                            <input className="input-text" type="text" id="name" required={true} autoComplete="false"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th className="label-form">Description</th>
+                                        <td>
+                                            <textarea className="input-area" id="description" required={true} autoComplete="false"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th className="label-form">How to</th>
+                                        <td>
+                                            <textarea className="input-area" id="howto" required={true} autoComplete="false"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th className="label-form">Score</th>
+                                        <td>
+                                            <input type="range" id="score" min="1" max="100"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th className="label-form">Healthy</th>
+                                        <td>
+                                            <input type="range" id="healthy" min="1" max="100"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th/>
+                                        <td>
+                                            <button type="submit" className="submit-button">SEND</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th/>
+                                        <td>
+                                            <button onClick={this.getDiet}>Add diets</button>
+                                        </td>
+                                    </tr>
+                                    {this.props.diets.map((diet)=>{
+                                        return(
+                                            <tr key={diet}>
+                                                <th>{diet}</th>
+                                                <td>
+                                                    <input type="checkbox" id={diet}></input>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div>
+                    </div>
+                    <span className="back-button-container">
+                        <Link to="/home">
+                            <button  className="back-button">GO BACK</button>
+                        </Link>
+                    </span>
                 </div>
             )
         }
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        diets: state.diets
+    }
+}
+
 const mapDispatchToProps = {
+    getDiets,
     addRecipe
 }
-const conexion = connect(null, mapDispatchToProps)
+const conexion = connect(mapStateToProps, mapDispatchToProps)
 export default  conexion(PostRecipe);

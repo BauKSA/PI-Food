@@ -6,6 +6,7 @@ import RecipeInfo from './RecipeInfo';
 import ResultCard from './ResultCard';
 import './styles/nameRecipes.css';
 import { Link } from 'react-router-dom';
+import {getFilter, setFilter} from '../funciones/filterFunctions.js';
 
 class NameRecipes extends React.Component{
     constructor(props){
@@ -14,11 +15,13 @@ class NameRecipes extends React.Component{
             search: '',
             pag: 0,
             order: '',
-            recipe: false
+            recipe: false,
+            filter: 'all'
         };
         this.paginado = ()=>{
                 if(this.props.recipes && !this.state.recipe){
-                    let results = getOrder(this.state.order, this.props.recipes);
+                    let first = getFilter(this.state.filter, this.props.recipes);
+                    let results = getOrder(this.state.order, first);
                     let pagRecipes = [];
                     if(this.state.pag * 9 <= results.length){
                         for(let i = 0; i < 9; i++){
@@ -27,7 +30,11 @@ class NameRecipes extends React.Component{
                             }
                         }
                     }
-                    return pagRecipes;
+                    if(pagRecipes.length > 0){
+                        return pagRecipes;
+                    }else{
+                        return [0];
+                    }
                 }else if(this.state.recipe){
                     return this.props.recipe
                 }else{
@@ -36,7 +43,8 @@ class NameRecipes extends React.Component{
         }
         this.nextPage = (e)=>{
             e.preventDefault();
-            let results = this.props.recipes;
+            let first = getFilter(this.state.filter, this.props.recipes);
+            let results = getOrder(this.state.order, first);
             if(results.length < ((this.state.pag + 2) * 9)){
                 e.target.disabled = true;
             }    
@@ -86,7 +94,8 @@ class NameRecipes extends React.Component{
                 pag: 0,
                 order: '',
                 recipes: [],
-                recipe: false
+                recipe: false,
+                filter: ''
             })
         }
 
@@ -100,12 +109,14 @@ class NameRecipes extends React.Component{
     }
     
     render() {
-        if(this.state.pag < 1 && document.getElementById("botonBack")){
+        if(this.state.pag === 0 && document.getElementById("botonNext")){
+            document.getElementById("botonNext").disabled = false;
+        }
+        if(this.state.pag === 0 && document.getElementById("botonBack")){
             document.getElementById("botonBack").disabled = true;
         }
         let results = this.paginado();
         if(results[0] && !this.state.recipe){
-            console.log(results);
             return (
                 <div>
                     <div className="search-container">
@@ -118,11 +129,20 @@ class NameRecipes extends React.Component{
                     </div>
                     <div className="sort-container">
                         <span className="back">
-                            <h5 className="sort">SORT BY</h5>
-                            <button id="first-button" className="order-button" onClick={()=>{setOrder('AZ', this)}}>A to Z</button>
-                            <button className="order-button" onClick={()=>{setOrder('ZA', this)}}>Z to A</button>
-                            <button className="order-button" onClick={()=>{setOrder('100', this)}}>SCORE MAX to MIN</button>
-                            <button id="last-button" className="order-button" onClick={()=>{setOrder('000', this)}}>SCORE MIN to MAX</button>
+                            <span className="filter-container">
+                                <h5 className="sort">Filter</h5>
+                                <button className="order-button" onClick={()=>{setFilter('vegetarian', this)}}>Vegetarian</button>
+                                <button className="order-button" onClick={()=>{setFilter('vegan', this)}}>Vegan</button>
+                                <button className="order-button" onClick={()=>{setFilter('glutenfree', this)}}>Gluten free</button>
+                                <button id="last-filter-button" className="order-button" onClick={()=>{setFilter('dairyfree', this)}}>Dairy Free</button>
+                            </span>
+                            <span className="button-container">
+                                <h5 className="sort">SORT BY</h5>
+                                <button id="first-button" className="order-button" onClick={()=>{setOrder('AZ', this)}}>A to Z</button>
+                                <button className="order-button" onClick={()=>{setOrder('ZA', this)}}>Z to A</button>
+                                <button className="order-button" onClick={()=>{setOrder('100', this)}}>Score MAX to MIN</button>
+                                <button id="last-button" className="order-button" onClick={()=>{setOrder('000', this)}}>Score MIN to MAX</button>
+                            </span>
                         </span>
                     </div>
                     <div>

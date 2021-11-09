@@ -14,7 +14,7 @@ const router = Router();
 router.use('/recipes', recipes);
 router.use('/addrecipe', recipe);
 router.use('/types', types);
-router.use('/diet', diet);
+router.use('/getdiets', diet);
 
 
 module.exports = router;

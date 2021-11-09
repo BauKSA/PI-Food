@@ -14,9 +14,9 @@ class RecipeInfo extends React.Component{
         if(this.props.diets){
             diets = this.props.diets;
         }
-        if(document.getElementById("description") && document.getElementById("howto")){
-            document.getElementById("description").innerHTML = recipe.description;
-            document.getElementById("howto").innerHTML = recipe.howto;
+        if(document.getElementById("desc-inner") && document.getElementById("how-inner")){
+            document.getElementById("desc-inner").innerHTML = recipe.description;
+            document.getElementById("how-inner").innerHTML = recipe.howto;
         }
         return(
             <div className="main.container">
@@ -68,13 +68,13 @@ class RecipeInfo extends React.Component{
                         <div>
                             <h3 className="desc-title">Description</h3>
                         </div>
-                        <div id="description"></div>
+                        <div id="desc-inner"></div>
                     </div>
                     <div className="howto-container">
                         <div>
                             <h3 className="how-title">How to</h3>
                         </div>
-                        <div id="howto"></div>
+                        <div id="how-inner"></div>
                     </div>
                 </div>
             </div>

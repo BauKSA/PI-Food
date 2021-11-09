@@ -29,6 +29,8 @@
 }
 
 .back{
+    display: flex;
+    flex-direction: row;
     align-self: center;
     background-color: gray;
     border-bottom-left-radius: 1em;
@@ -49,10 +51,7 @@
     color: whitesmoke;
     padding: 0.5em;
     transition: 0.2s;
-}
-
-#first-button{
-    border-bottom-left-radius: 1em;
+    margin-bottom: 0.2em;
 }
 
 #last-button{
@@ -201,4 +200,28 @@
     color: black;
     border-style: solid;
     border-color: black;
+}
+
+
+.filter-container{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    margin-right: 0.5em;
+    width: 50%;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5em;
+    width: 50%;
+}
+
+.sort{
+    align-self: center;
+}
+
+#last-filter-button{
+    border-bottom-left-radius: 1em;
 }
