@@ -64,6 +64,12 @@
     cursor: pointer;
 }
 
+.order-button:disabled{
+    background-color: whitesmoke;
+    color: rgb(35, 35, 35);
+    cursor: default;
+}
+
 .search-container{
     margin-top: 2em;
 }

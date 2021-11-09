@@ -109,6 +109,7 @@ class NameRecipes extends React.Component{
     }
     
     render() {
+
         if(this.state.pag === 0 && document.getElementById("botonNext")){
             document.getElementById("botonNext").disabled = false;
         }
@@ -138,10 +139,34 @@ class NameRecipes extends React.Component{
                             </span>
                             <span className="button-container">
                                 <h5 className="sort">SORT BY</h5>
-                                <button id="first-button" className="order-button" onClick={()=>{setOrder('AZ', this)}}>A to Z</button>
-                                <button className="order-button" onClick={()=>{setOrder('ZA', this)}}>Z to A</button>
-                                <button className="order-button" onClick={()=>{setOrder('100', this)}}>Score MAX to MIN</button>
-                                <button id="last-button" className="order-button" onClick={()=>{setOrder('000', this)}}>Score MIN to MAX</button>
+                                <button id="first-button" className="order-button" onClick={(e)=>{
+                                    setOrder('AZ', this);
+                                    document.getElementById("last-button").disabled = false;
+                                    document.getElementById("100").disabled = false;
+                                    document.getElementById("ZA").disabled = false;
+                                    e.target.disabled = true;
+                                    }}>A to Z</button>
+                                <button id="ZA" className="order-button" onClick={(e)=>{
+                                    setOrder('ZA', this);
+                                    document.getElementById("first-button").disabled = false;
+                                    document.getElementById("100").disabled = false;
+                                    document.getElementById("last-button").disabled = false;
+                                    e.target.disabled = true;
+                                    }}>Z to A</button>
+                                <button id="100" className="order-button" onClick={(e)=>{
+                                    setOrder('100', this);
+                                    document.getElementById("first-button").disabled = false;
+                                    document.getElementById("last-button").disabled = false;
+                                    document.getElementById("ZA").disabled = false;
+                                    e.target.disabled = true;
+                                    }}>Score MAX to MIN</button>
+                                <button id="last-button" className="order-button" onClick={(e)=>{
+                                    setOrder('000', this);
+                                    document.getElementById("first-button").disabled = false;
+                                    document.getElementById("100").disabled = false;
+                                    document.getElementById("ZA").disabled = false;
+                                    e.target.disabled = true;
+                                    }}>Score MIN to MAX</button>
                             </span>
                         </span>
                     </div>
