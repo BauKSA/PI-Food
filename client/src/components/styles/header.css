@@ -1,0 +1,58 @@
+.header-title{
+    background-color: black;
+    margin: 0;
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+    padding: 1em;
+    color: whitesmoke;
+}
+
+.header-buttons-container{
+    margin-bottom: 5em;
+}
+
+.header-buttons{
+    padding: 2em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background-color: black;
+}
+
+.hButton{
+    border-style: solid;
+    border-color: gray;
+    background-color: gray;
+    font-size: large;
+    padding: 0.5em;
+    transition: 0.5s;
+    width: 10em;
+}
+
+#first-hButton{
+    border-bottom-left-radius: 1em;
+}
+
+#last-hButton{
+    border-bottom-right-radius: 1em;
+}
+
+#middle-hButton{
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+
+.hButton:hover{
+    border-color: white;
+    background-color: rgb(175, 175, 175);
+    cursor: pointer;
+}
+
+:Link:hover{
+    cursor: default;
+}
+
+.hButton:disabled{
+    border-color: white;
+    background-color: rgb(175, 175, 175);
+    cursor: default;
+}

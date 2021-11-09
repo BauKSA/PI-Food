@@ -16,7 +16,7 @@ class NameRecipes extends React.Component{
             pag: 0,
             order: '',
             recipe: false,
-            filter: 'all'
+            filter: 'xxxx'
         };
         this.paginado = ()=>{
                 if(this.props.recipes && !this.state.recipe){
@@ -93,9 +93,8 @@ class NameRecipes extends React.Component{
                 ...this.state,
                 pag: 0,
                 order: '',
-                recipes: [],
                 recipe: false,
-                filter: ''
+                filter: 'xxxx'
             })
         }
 
@@ -131,11 +130,13 @@ class NameRecipes extends React.Component{
                     <div className="sort-container">
                         <span className="back">
                             <span className="filter-container">
-                                <h5 className="sort">Filter</h5>
-                                <button className="order-button" onClick={()=>{setFilter('vegetarian', this)}}>Vegetarian</button>
-                                <button className="order-button" onClick={()=>{setFilter('vegan', this)}}>Vegan</button>
-                                <button className="order-button" onClick={()=>{setFilter('glutenfree', this)}}>Gluten free</button>
-                                <button id="last-filter-button" className="order-button" onClick={()=>{setFilter('dairyfree', this)}}>Dairy Free</button>
+                                <h5 className="sort">INCLUDES</h5>
+                                <span><input type="checkbox" id="filter-vegetarian"/> Vegetarian</span>
+                                <span><input type="checkbox" id="filter-vegan"/> Vegan</span>
+                                <span><input type="checkbox" id="filter-glutenfree"/> Gluten free</span>
+                                <span><input type="checkbox" id="filter-dairyfree"/> Dairy Free</span>
+                                <br/>
+                                <button onClick={()=>{setFilter(this)}}>Filter</button>
                             </span>
                             <span className="button-container">
                                 <h5 className="sort">SORT BY</h5>

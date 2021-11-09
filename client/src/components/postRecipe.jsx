@@ -66,7 +66,6 @@ class PostRecipe extends React.Component{
                 diet.push("whole30");
                 dairyfree = true;
             }
-            console.log(diet);
             let obj = {
                 name: document.getElementById("name").value,
                 description: document.getElementById("description").value,

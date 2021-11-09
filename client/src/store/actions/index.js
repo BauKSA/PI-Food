@@ -38,7 +38,6 @@ export function addRecipe(data){
         return function(){
             axios.post('http://localhost:3002/api/addrecipe', data)
             .then((response)=>{
-                console.log(response);
             })
         }
         

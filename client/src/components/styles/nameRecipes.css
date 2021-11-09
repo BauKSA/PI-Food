@@ -212,7 +212,7 @@
 .filter-container{
     display: flex;
     flex-direction: column;
-    text-align: justify;
+    text-align: left;
     margin-right: 0.5em;
     width: 50%;
 }

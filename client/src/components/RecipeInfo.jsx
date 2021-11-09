@@ -18,7 +18,6 @@ class RecipeInfo extends React.Component{
                 diets = this.props.diets;
             }
         }
-        console.log(recipe)
         if(document.getElementById("desc-inner") && document.getElementById("how-inner")){
             document.getElementById("desc-inner").innerHTML = recipe.description;
             document.getElementById("how-inner").innerHTML = recipe.howto;
