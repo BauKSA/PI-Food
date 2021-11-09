@@ -15,9 +15,9 @@ export default function Home(){
                         <h4 className="home-title">Ok, soo... Here I come!</h4>
                         <p>
                             After two weeks, I finally finished my PI project for Henry... two long weeks. Or short, depending of how You look at it xD
-                            In this, I want to show my skills using Js, React, Redux, HTML... and maybe CSS. For that, I create this food/recipes App,
+                            In this site, I want to show my skills using Js, React, Redux, HTML... and maybe CSS. That's why I created this food/recipes App,
                             where you can find thousands of recipes and filter them by diets, like "vegan", "vegetarian", etc.
-                            And, if you cannot find an especific recipe... you can create it! 
+                            And, if you can't find a specific recipe... you can upload your own!
                             So, end presentations and start with the app... maybe searching for some recipes??
                         </p>
                         <Link to="/search">
