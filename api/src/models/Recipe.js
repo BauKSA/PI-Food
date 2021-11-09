@@ -60,5 +60,11 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       allowNull: false
     },
+
+    img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'https://image.flaticon.com/icons/png/512/100/100417.png'
+    }
   });
 };

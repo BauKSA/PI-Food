@@ -48,7 +48,6 @@ export function getDiets(){
     return function(dispatch){
         axios.get('http://localhost:3002/api/getdiets')
         .then((response)=>{
-            console.log(response)
             dispatch({
                 type: GET_DIETS,
                 payload: response.data

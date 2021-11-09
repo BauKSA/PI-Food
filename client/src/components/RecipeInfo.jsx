@@ -8,12 +8,17 @@ class RecipeInfo extends React.Component{
         let recipe = {};
         if(this.props.obj.length > 0){
             recipe = this.props.obj[0];
+            diets = this.props.obj[0].diet;
         }else{
             recipe = this.props.obj;
         }
         if(this.props.diets){
-            diets = this.props.diets;
+            if(this.props.obj.length > 0){
+            }else{
+                diets = this.props.diets;
+            }
         }
+        console.log(recipe)
         if(document.getElementById("desc-inner") && document.getElementById("how-inner")){
             document.getElementById("desc-inner").innerHTML = recipe.description;
             document.getElementById("how-inner").innerHTML = recipe.howto;

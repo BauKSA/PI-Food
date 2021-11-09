@@ -33,8 +33,16 @@ conn.sync({ force: true }).then(() => {
   server.listen(3002, () => {
     createTable(conn.models.Diet, "vegetarian");
     createTable(conn.models.Diet, "vegan");
-    createTable(conn.models.Diet, "glutenFree");
-    createTable(conn.models.Diet, "dairyfre");
+    createTable(conn.models.Diet, "glutenfree");
+    createTable(conn.models.Diet, "dairyfree");
+    createTable(conn.models.Diet, "ketogenic");
+    createTable(conn.models.Diet, "lacto-vegetarian");
+    createTable(conn.models.Diet, "ovo-vegetarian");
+    createTable(conn.models.Diet, "pescetarian");
+    createTable(conn.models.Diet, "paleo");
+    createTable(conn.models.Diet, "primal");
+    createTable(conn.models.Diet, "low-FODMAP");
+    createTable(conn.models.Diet, "whole30");
     console.log('%s listening at 3002'); // eslint-disable-line no-console
   });
 });

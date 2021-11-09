@@ -34,17 +34,51 @@ class PostRecipe extends React.Component{
                 diet.push("dairy free");
                 dairyfree = true;
             }
+            if(document.getElementById("ketogenic")?.checked){
+                diet.push("ketogenic");
+                dairyfree = true;
+            }
+            if(document.getElementById("lacto-vegetarian")?.checked){
+                diet.push("lacto vegetarian");
+                dairyfree = true;
+            }
+            if(document.getElementById("ovo-vegetarian")?.checked){
+                diet.push("ovo vegetarian");
+                dairyfree = true;
+            }
+            if(document.getElementById("pescetarian")?.checked){
+                diet.push("pescetarian");
+                dairyfree = true;
+            }
+            if(document.getElementById("paleo")?.checked){
+                diet.push("paleo");
+                dairyfree = true;
+            }
+            if(document.getElementById("primal")?.checked){
+                diet.push("primal");
+                dairyfree = true;
+            }
+            if(document.getElementById("low-FODMAP")?.checked){
+                diet.push("low FODMAP");
+                dairyfree = true;
+            }
+            if(document.getElementById("whole30")?.checked){
+                diet.push("whole30");
+                dairyfree = true;
+            }
+            console.log(diet);
             let obj = {
                 name: document.getElementById("name").value,
                 description: document.getElementById("description").value,
                 score: document.getElementById("score").value,
                 healthy: document.getElementById("healthy").value,
                 howto: document.getElementById("howto").value,
-                diets: diet,
+                diet: diet,
                 vegetarian: vegetarian,
                 vegan: vegan,
                 glutenfree: glutenfree,
-                dairyfree: dairyfree
+                dairyfree: dairyfree,
+                img: document.getElementById("image-input").value
             }
             JSON.stringify(obj);
             this.props.addRecipe(obj)
@@ -55,7 +89,8 @@ class PostRecipe extends React.Component{
 
         this.getDiet = (e)=>{
             e.preventDefault();
-            this.props.getDiets()
+            e.target.disabled = true;
+            this.props.getDiets();
         }
     }
 
@@ -110,6 +145,12 @@ class PostRecipe extends React.Component{
                                         <th className="label-form">Healthy</th>
                                         <td>
                                             <input type="range" id="healthy" min="1" max="100"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th className="label-form">Image</th>
+                                        <td>
+                                            <input type="text" id="image-input"/>
                                         </td>
                                     </tr>
                                     <tr>
