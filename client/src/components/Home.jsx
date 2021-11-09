@@ -12,9 +12,9 @@ export default function Home(){
                 </div>
                 <div className="homeInfo-container">
                     <span className="home-info">
-                        <h4 className="home-title">Ok, soo... there I go!</h4>
+                        <h4 className="home-title">Ok, soo... Here I come!</h4>
                         <p>
-                            After two weeks, I finally end my PI project for Henry... two long weeks. Or shorts, depends how you look it xD
+                            After two weeks, I finally finished my PI project for Henry... two long weeks. Or short, depending of how You look at it xD
                             In this, I want to show my skills using Js, React, Redux, HTML... and maybe CSS. For that, I create this food/recipes App,
                             where you can find thousands of recipes and filter them by diets, like "vegan", "vegetarian", etc.
                             And, if you cannot find an especific recipe... you can create it! 

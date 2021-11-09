@@ -54,4 +54,76 @@
 
 th, td {
     padding: 0.5em;
-  }
+}
+
+#submit-button{
+    border-color: white;
+    border-style: solid;
+    background-color: black;
+    font-size: medium;
+    font-weight: bold;
+    color: whitesmoke;
+    padding: 0.75em;
+    border-radius: 0.5em;
+    transition: 0.5s;
+}
+
+#submit-button:hover{
+    box-shadow: 5px 5px black;
+    cursor: pointer;
+}
+
+#diet-button{
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    transition: 0.5s;
+
+}
+
+#diet-button:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+
+#diet-button:disabled:hover{
+    cursor: default;
+    background-color: white;
+}
+
+.success-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.success{
+    padding: 1em;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    border-radius: 1em;
+    margin-bottom: 2em;
+    width: 25vw;
+    align-self: center;
+}
+
+.other-button{
+    border-style: solid;
+    border-width: 0.75em;
+    border-color: black;
+    background-color: white;
+    font-weight: bold;
+    padding: 1em;
+    width: 15vw;
+    align-self: center;
+    transition: 0.5s;
+}
+
+.other-button:hover{
+    cursor: pointer;
+    width: 20vw;
+    border-color: white;
+    background-color: black;
+    color: white;
+}

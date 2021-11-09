@@ -12,6 +12,7 @@ function App() {
        <Route exact path="/">
         <div className="App">
           <Header/>
+          <img src="https://image.flaticon.com/icons/png/512/100/100417.png" width="200" alt="home-image"/>
         </div>
       </Route>
       <Route exact path="/home">

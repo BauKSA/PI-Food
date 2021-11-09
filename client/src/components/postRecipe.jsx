@@ -36,35 +36,31 @@ class PostRecipe extends React.Component{
             }
             if(document.getElementById("ketogenic")?.checked){
                 diet.push("ketogenic");
-                dairyfree = true;
             }
             if(document.getElementById("lacto-vegetarian")?.checked){
                 diet.push("lacto vegetarian");
-                dairyfree = true;
             }
             if(document.getElementById("ovo-vegetarian")?.checked){
                 diet.push("ovo vegetarian");
-                dairyfree = true;
             }
             if(document.getElementById("pescetarian")?.checked){
                 diet.push("pescetarian");
-                dairyfree = true;
             }
             if(document.getElementById("paleo")?.checked){
                 diet.push("paleo");
-                dairyfree = true;
             }
             if(document.getElementById("primal")?.checked){
                 diet.push("primal");
-                dairyfree = true;
             }
             if(document.getElementById("low-FODMAP")?.checked){
                 diet.push("low FODMAP");
-                dairyfree = true;
             }
             if(document.getElementById("whole30")?.checked){
                 diet.push("whole30");
-                dairyfree = true;
+            }
+            let img = document.getElementById("image-input").value;
+            if(img === ''){
+                img = 'https://image.flaticon.com/icons/png/512/100/100417.png';
             }
             let obj = {
                 name: document.getElementById("name").value,
@@ -77,7 +73,7 @@ class PostRecipe extends React.Component{
                 vegan: vegan,
                 glutenfree: glutenfree,
                 dairyfree: dairyfree,
-                img: document.getElementById("image-input").value
+                img: img
             }
             JSON.stringify(obj);
             this.props.addRecipe(obj)
@@ -96,17 +92,14 @@ class PostRecipe extends React.Component{
     render(){
         if(this.state.created){
             return(
-                <div>
-                    SUCCESSFULLY CREATED
-                    <Link to="/home">
-                        <button>BACK TO HOME</button>
-                    </Link>
-                    <button onClick={(e)=>{
+                <div className="success-container">
+                    <span className="success">SUCCESSFULLY CREATED</span>
+                    <button className="other-button" onClick={(e)=>{
                         e.preventDefault();
                         this.setState({
                             created: false
                         })
-                    }}>CREATE ANOTHER RECIPE</button>
+                    }}>CREATE ANOTHER ONE</button>
                 </div>
             )
         }else{
@@ -155,13 +148,13 @@ class PostRecipe extends React.Component{
                                     <tr>
                                         <th/>
                                         <td>
-                                            <button type="submit" className="submit-button">SEND</button>
+                                            <button id="submit-button" type="submit" className="submit-button">SEND</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th/>
                                         <td>
-                                            <button onClick={this.getDiet}>Add diets</button>
+                                            <button id="diet-button" onClick={this.getDiet}>Add diets</button>
                                         </td>
                                     </tr>
                                     {this.props.diets.map((diet)=>{
@@ -182,7 +175,13 @@ class PostRecipe extends React.Component{
                     </div>
                     <span className="back-button-container">
                         <Link to="/home">
-                            <button  className="back-button">GO BACK</button>
+                            <button className="back-button" onClick={
+                                ()=>{
+                                    document.getElementById("first-hButton").disabled = true;
+                                    document.getElementById("middle-hButton").disabled = false;
+                                    document.getElementById("last-hButton").disabled = false;
+                                }
+                            }>GO BACK</button>
                         </Link>
                     </span>
                 </div>
