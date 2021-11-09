@@ -9,6 +9,7 @@ const router = Router();
 
 
 router.get('/', async(req, res, next)=>{
+    try {
         let diets = await Diet.findAll()
         console.log(diets);
         let dietNames = [];
@@ -16,6 +17,9 @@ router.get('/', async(req, res, next)=>{
             dietNames.push(diet.name);
         })
         res.send(dietNames);
+    } catch (error) {
+        next(error);
+    }
     })
 
 module.exports = router;
