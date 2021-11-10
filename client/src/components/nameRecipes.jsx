@@ -73,6 +73,7 @@ class NameRecipes extends React.Component{
         }
         this.onSubmit = (e)=>{
             e.preventDefault();
+            this.toTop(530);
             if(document.getElementById("first-button")){
                 document.getElementById("first-button").disabled = false;
             }
@@ -158,7 +159,10 @@ class NameRecipes extends React.Component{
                                 <span><input type="checkbox" id="filter-glutenfree"/> Gluten free</span>
                                 <span><input type="checkbox" id="filter-dairyfree"/> Dairy Free</span>
                                 <br/>
-                                <button onClick={()=>{setFilter(this)}}>Filter</button>
+                                <button onClick={()=>{
+                                    this.toTop(530);
+                                    setFilter(this)
+                                    }}>Filter</button>
                             </span>
                             <span className="button-container">
                                 <h5 className="sort">SORT BY</h5>
