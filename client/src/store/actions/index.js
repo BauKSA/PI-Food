@@ -3,6 +3,7 @@ import axios from 'axios';
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const GET_DIETS = "GET_DIETS";
 export const GET_BY_ID = "GET_BY_ID";
+export const RESET = "RESET";
 
 export function searchByName(name, obj){
     return function(dispatch){
@@ -51,6 +52,14 @@ export function getDiets(){
                 type: GET_DIETS,
                 payload: response.data
             })
+        })
+    }
+}
+
+export function reset(){
+    return function(dispatch){
+        dispatch({
+            type: RESET
         })
     }
 }

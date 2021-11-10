@@ -9,7 +9,8 @@ class PostRecipe extends React.Component{
         super(props);
         this.state = {
             created: false,
-            diets: []
+            diets: [],
+            addDiets: false
         }
         this.onSubmit = (e)=>{
             e.preventDefault();
@@ -77,15 +78,26 @@ class PostRecipe extends React.Component{
             }
             JSON.stringify(obj);
             this.props.addRecipe(obj)
+
             this.setState({
-                created: true
+                created: true,
             })
         }
 
         this.getDiet = (e)=>{
             e.preventDefault();
-            e.target.disabled = true;
             this.props.getDiets();
+            this.setState({
+                ...this.state,
+                addDiets: true
+            })
+        }
+        this.dietButton = ()=>{
+            if(this.state.addDiets){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
@@ -154,7 +166,7 @@ class PostRecipe extends React.Component{
                                     <tr>
                                         <th/>
                                         <td>
-                                            <button id="diet-button" onClick={this.getDiet}>Add diets</button>
+                                            <button disabled={this.dietButton()} id="diet-button" onClick={this.getDiet}>Add diets</button>
                                         </td>
                                     </tr>
                                     {this.props.diets.map((diet)=>{

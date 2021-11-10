@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import './styles/header.css';
+import { connect } from 'react-redux'
+import { reset } from "../store/actions"
 
 class Header extends React.Component{
     constructor(props){
@@ -11,6 +13,7 @@ class Header extends React.Component{
             document.getElementById("middle-hButton").disabled = false;
             document.getElementById("last-hButton").disabled = false;
             e.disabled = true;
+            this.props.reset();
         }
     }
 
@@ -51,4 +54,8 @@ class Header extends React.Component{
     }
 }
 
-export default Header;
+const mapDispatchToProps = {
+    reset
+}
+const conexion = connect(null, mapDispatchToProps)
+export default  conexion(Header);
