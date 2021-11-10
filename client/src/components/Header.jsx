@@ -10,7 +10,7 @@ class Header extends React.Component{
             document.getElementById("first-hButton").disabled = false;
             document.getElementById("middle-hButton").disabled = false;
             document.getElementById("last-hButton").disabled = false;
-            e.target.disabled = true;
+            e.disabled = true;
         }
     }
 
@@ -24,13 +24,25 @@ class Header extends React.Component{
                 <div className="header-buttons-container">
                     <span className="header-buttons">
                         <Link to="/home">
-                            <button id="first-hButton" className="hButton" onClick={this.onClick}>Home</button>
+                            <button id="first-hButton" className="hButton" onClick={()=>{
+                                window.scrollTo({
+                                    top: 530,
+                                    behavior: 'smooth'
+                                });
+                                this.onClick(document.getElementById("first-hButton"));
+                                }}>Home</button>
                         </Link>
                         <Link to="/search">
                             <button id="middle-hButton" className="hButton" onClick={this.onClick}>Search</button>
                         </Link>
                         <Link to="/addrecipe">
-                            <button id="last-hButton" className="hButton" onClick={this.onClick}>Create recipe</button>
+                            <button id="last-hButton" className="hButton" onClick={()=>{
+                                window.scrollTo({
+                                    top: 530,
+                                    behavior: 'smooth'
+                                });
+                                this.onClick(document.getElementById("last-hButton"));
+                                }}>Create recipe</button>
                         </Link>
                     </span>
                 </div>
