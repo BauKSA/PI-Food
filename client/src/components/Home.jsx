@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import img from '../imgs/HeLiaoDiao.jpg';
+import img from '../imgs/recipeIcon.png';
 import './styles/home.css';
 
 export default function Home(){
@@ -8,7 +8,7 @@ export default function Home(){
             <h2>WELCOME!</h2>
             <div className="home-container">
                 <div className="homeImg-container">
-                    <img className="home-img" src={img} alt="HeLiaoDiao"/>
+                    <img className="home-img" src={img} alt="recipeIcon"/>
                 </div>
                 <div className="homeInfo-container">
                     <span className="home-info">

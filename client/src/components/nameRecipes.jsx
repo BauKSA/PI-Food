@@ -117,16 +117,16 @@ class NameRecipes extends React.Component{
                 recipe: false
             })
         }
+        this.backButton = ()=>{
+            if(this.state.pag === 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
     
     render() {
-
-        if(this.state.pag === 0 && document.getElementById("botonNext")){
-            document.getElementById("botonNext").disabled = false;
-        }
-        if(this.state.pag === 0 && document.getElementById("botonBack")){
-            document.getElementById("botonBack").disabled = true;
-        }
         let results = this.paginado();
         if(results[0] && !this.state.recipe){
             return (
@@ -196,7 +196,7 @@ class NameRecipes extends React.Component{
                         }
                     </div>
                     <div className="pButton-container">
-                        <button className="button-page" onClick={this.backPage} id="botonBack">BACK</button>
+                        <button disabled={this.backButton()} className="button-page" onClick={this.backPage} id="botonBack">BACK</button>
                         <p className="page-number">{this.state.pag + 1}</p>
                         <button className="button-page" onClick={this.nextPage} id="botonNext">NEXT</button>
                     </div>

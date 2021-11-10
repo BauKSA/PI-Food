@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import PostRecipe from './components/postRecipe';
 import Home from './components/Home';
 import Header from './components/Header';
+import img from './imgs/recipeIcon.png';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
        <Route exact path="/">
         <div className="App">
           <Header/>
-          <img src="https://image.flaticon.com/icons/png/512/100/100417.png" width="200" alt="home-image"/>
+          <img src={img} width="200" alt="home-image"/>
         </div>
       </Route>
       <Route exact path="/home">
