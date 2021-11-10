@@ -43,6 +43,7 @@ class NameRecipes extends React.Component{
         }
         this.nextPage = (e)=>{
             e.preventDefault();
+            this.toTop(530);
             let first = getFilter(this.state.filter, this.props.recipes);
             let results = getOrder(this.state.order, first);
             if(results.length < ((this.state.pag + 2) * 9)){
@@ -58,6 +59,7 @@ class NameRecipes extends React.Component{
         }
         this.backPage = (e)=>{
             e.preventDefault();
+            this.toTop(530);
             if((this.state.pag - 1) <= 0){
                 e.target.disabled = true;
             }
@@ -94,6 +96,7 @@ class NameRecipes extends React.Component{
         }
         this.showInfo = (e)=>{
             e.preventDefault()
+            this.toTop(0);
             this.props.getById(e.target.id, this)
         }
         this.reset = ()=>{
@@ -112,6 +115,7 @@ class NameRecipes extends React.Component{
 
         this.back = (e)=>{
             e.preventDefault();
+            this.toTop(530);
             this.setState({
                 ...this.state,
                 recipe: false
@@ -123,6 +127,12 @@ class NameRecipes extends React.Component{
             }else{
                 return false;
             }
+        }
+        this.toTop = (n)=>{
+            window.scrollTo({
+                top: n,
+                behavior: 'smooth'
+            });
         }
     }
     
