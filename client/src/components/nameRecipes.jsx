@@ -43,33 +43,19 @@ class NameRecipes extends React.Component{
         }
         this.nextPage = (e)=>{
             e.preventDefault();
-            this.toTop(530);
-            let first = getFilter(this.state.filter, this.props.recipes);
-            let results = getOrder(this.state.order, first);
-            if(results.length < ((this.state.pag + 2) * 9)){
-                e.target.disabled = true;
-            }    
-            if(results.length >= ((this.state.pag + 1) * 9)){
-                document.getElementById("botonBack").disabled = false;
-                this.setState({
-                    ...this.state,
-                    pag: this.state.pag + 1
-                })
-            }
+            this.toTop(530);    
+            this.setState({
+                ...this.state,
+                pag: this.state.pag + 1
+            })
         }
         this.backPage = (e)=>{
             e.preventDefault();
             this.toTop(530);
-            if((this.state.pag - 1) <= 0){
-                e.target.disabled = true;
-            }
-            if(this.state.pag > 0){
-                document.getElementById("botonNext").disabled = false;
-                this.setState({
-                    ...this.state,
-                    pag: this.state.pag - 1
-                })
-            }
+            this.setState({
+                ...this.state,
+                pag: this.state.pag - 1
+            })
         }
         this.onSubmit = (e)=>{
             e.preventDefault();
@@ -124,6 +110,15 @@ class NameRecipes extends React.Component{
         }
         this.backButton = ()=>{
             if(this.state.pag === 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        this.nextButton = ()=>{
+            let first = getFilter(this.state.filter, this.props.recipes);
+            let results = getOrder(this.state.order, first);
+            if(results.length <= ((this.state.pag + 1) * 9)){
                 return true;
             }else{
                 return false;
@@ -212,7 +207,7 @@ class NameRecipes extends React.Component{
                     <div className="pButton-container">
                         <button disabled={this.backButton()} className="button-page" onClick={this.backPage} id="botonBack">BACK</button>
                         <p className="page-number">{this.state.pag + 1}</p>
-                        <button className="button-page" onClick={this.nextPage} id="botonNext">NEXT</button>
+                        <button disabled={this.nextButton()} className="button-page" onClick={this.nextPage} id="botonNext">NEXT</button>
                     </div>
                 </div>    
             )

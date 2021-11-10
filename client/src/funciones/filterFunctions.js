@@ -3,7 +3,7 @@ export function getFilter(order, array){
     switch(order){
         case 'vvxd':
             filter = array.filter((a)=>{
-                if(!a.glutenfree){
+                if(!a.glutenfree && (a.vegetarian || a.vegan || a.dairyfree)){
                     return a;
                 }
             });
@@ -11,7 +11,7 @@ export function getFilter(order, array){
 
         case 'vvgx':
             filter = array.filter((a)=>{
-                if(!a.dairyfree){
+                if(!a.dairyfree && (a.vegetarian || a.vegan || a.glutenfree)){
                     return a;
                 }
             });
@@ -19,7 +19,7 @@ export function getFilter(order, array){
 
         case 'vvxx':
             filter = array.filter((a)=>{
-                if(!a.dairyfree && !a.glutenfree){
+                if(!a.dairyfree && !a.glutenfree  && (a.vegetarian || a.vegan)){
                     return a;
                 }
             });
@@ -27,7 +27,7 @@ export function getFilter(order, array){
 
         case 'vxgd':
             filter = array.filter((a)=>{
-                if(!a.vegan){
+                if(!a.vegan && (a.vegetarian || a.glutenfree || a.dairyfree)){
                     return a;
                 }
             });
@@ -35,7 +35,7 @@ export function getFilter(order, array){
 
         case 'vxxd':
             filter = array.filter((a)=>{
-                if(!a.vegan && !a.dairyfree){
+                if(!a.vegan && !a.dairyfree && (a.vegetarian || a.dairyfree)){
                     return a;
                 }
             });
@@ -43,7 +43,7 @@ export function getFilter(order, array){
 
         case 'vxgx':
             filter = array.filter((a)=>{
-                if(!a.vegan && !a.dairyfree){
+                if(!a.vegan && !a.dairyfree  && (a.vegetarian || a.glutenfree)){
                     return a;
                 }
             });
@@ -51,7 +51,7 @@ export function getFilter(order, array){
 
         case 'vxxx':
             filter = array.filter((a)=>{
-                if(!a.dairyfree && !a.vegan && !a.glutenfree){
+                if(!a.dairyfree && !a.vegan && !a.glutenfree  && (a.vegetarian)){
                     return a;
                 }
             });
@@ -59,7 +59,7 @@ export function getFilter(order, array){
 
         case 'xvgd':
             filter = array.filter((a)=>{
-                if(!a.vegetarian){
+                if(!a.vegetarian  && (a.vegan || a.glutenfree || a.dairyfree)){
                     return a;
                 }
             });
@@ -67,7 +67,7 @@ export function getFilter(order, array){
 
         case 'xvxd':
             filter = array.filter((a)=>{
-                if(!a.vegetarian && !a.glutenfree){
+                if(!a.vegetarian && !a.glutenfree && (a.vegan || a.dairyfree)){
                     return a;
                 }
             });
@@ -75,7 +75,7 @@ export function getFilter(order, array){
 
         case 'xvgx':
             filter = array.filter((a)=>{
-                if(!a.vegetarian && !a.dairyfree){
+                if(!a.vegetarian && !a.dairyfree && (a.vegan || a.glutenfree)){
                     return a;
                 }
             });
@@ -83,7 +83,7 @@ export function getFilter(order, array){
 
         case 'xvxx':
             filter = array.filter((a)=>{
-                if(!a.vegetarian && !a.glutenfree && !a.dairyfree){
+                if(!a.vegetarian && !a.glutenfree && !a.dairyfree && (a.vegetarian)){
                     return a;
                 }
             });
@@ -91,7 +91,7 @@ export function getFilter(order, array){
 
         case 'xxgd':
             filter = array.filter((a)=>{
-                if(!a.vegetarian && !a.vegan){
+                if(!a.vegetarian && !a.vegan && (a.glutenfree || a.dairyfree)){
                     return a;
                 }
             });
@@ -99,7 +99,7 @@ export function getFilter(order, array){
 
         case 'xxxd':
             filter = array.filter((a)=>{
-                if(!a.vegetarian && !a.vegan && !a.glutenfree){
+                if(!a.vegetarian && !a.vegan && !a.glutenfree && (a.dairyfree)){
                     return a;
                 }
             });
@@ -107,7 +107,7 @@ export function getFilter(order, array){
 
         case 'xxgx':
             filter = array.filter((a)=>{
-                if(!a.vegetarian && !a.vegan && !a.dairyfree){
+                if(!a.vegetarian && !a.vegan && !a.dairyfree && (a.glutenfree)){
                     return a;
                 }
             });
