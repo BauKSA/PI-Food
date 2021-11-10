@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import PostRecipe from './components/postRecipe';
 import Home from './components/Home';
 import Header from './components/Header';
-import img from './imgs/recipeIcon.png';
+import recipeIcon from './imgs/recipeIcon.png';
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
        <Route exact path="/">
         <div className="App">
           <Header/>
-          <img src={img} width="200" alt="home-image"/>
+          <img src={recipeIcon} width="200" alt="recipe-icon"/>
         </div>
       </Route>
       <Route exact path="/home">

@@ -36,7 +36,9 @@ class Header extends React.Component{
                                 }}>Home</button>
                         </Link>
                         <Link to="/search">
-                            <button id="middle-hButton" className="hButton" onClick={this.onClick}>Search</button>
+                            <button id="middle-hButton" className="hButton" onClick={()=>{
+                                this.onClick(document.getElementById("middle-hButton"))
+                            }}>Search</button>
                         </Link>
                         <Link to="/addrecipe">
                             <button id="last-hButton" className="hButton" onClick={()=>{

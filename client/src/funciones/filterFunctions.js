@@ -5,6 +5,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.glutenfree && (a.vegetarian || a.vegan || a.dairyfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -13,6 +15,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.dairyfree && (a.vegetarian || a.vegan || a.glutenfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -21,6 +25,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.dairyfree && !a.glutenfree  && (a.vegetarian || a.vegan)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -29,6 +35,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegan && (a.vegetarian || a.glutenfree || a.dairyfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -37,6 +45,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegan && !a.dairyfree && (a.vegetarian || a.dairyfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -45,6 +55,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegan && !a.dairyfree  && (a.vegetarian || a.glutenfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -53,6 +65,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.dairyfree && !a.vegan && !a.glutenfree  && (a.vegetarian)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -61,6 +75,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegetarian  && (a.vegan || a.glutenfree || a.dairyfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -69,6 +85,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegetarian && !a.glutenfree && (a.vegan || a.dairyfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -77,6 +95,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegetarian && !a.dairyfree && (a.vegan || a.glutenfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -85,6 +105,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegetarian && !a.glutenfree && !a.dairyfree && (a.vegetarian)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -93,6 +115,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegetarian && !a.vegan && (a.glutenfree || a.dairyfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -101,6 +125,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegetarian && !a.vegan && !a.glutenfree && (a.dairyfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
@@ -109,6 +135,8 @@ export function getFilter(order, array){
             filter = array.filter((a)=>{
                 if(!a.vegetarian && !a.vegan && !a.dairyfree && (a.glutenfree)){
                     return a;
+                }else{
+                    return false;
                 }
             });
             return filter;
